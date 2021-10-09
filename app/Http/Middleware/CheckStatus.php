@@ -14,9 +14,18 @@ class CheckStatus
      * @param  \Closure  $next
      * @return mixed
      */
+    // public function handle(Request $request, Closure $next)
+    // {
+    //     if (auth()->user()->status == 'active') {
+    //         return $next($request);
+    //     }
+    //     return response()->json('Your account is inactive');
+        
+    // }
+
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->status == 'active') {
+        if (auth()->user()) {
             return $next($request);
         }
         return response()->json('Your account is inactive');
